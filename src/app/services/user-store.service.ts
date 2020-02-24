@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 })
 export class UserStoreService {
   isLoggedIn: boolean = false;
-
   constructor(private router: Router) { }
 
   get currentUser(){
@@ -16,7 +15,7 @@ export class UserStoreService {
   login(username, password){
     this.isLoggedIn = true;
     localStorage.setItem("user", username);
-    this.router.navigate(['/user/${username}'])
+    this.router.navigate(['/drug-input'])
   }
 
   logout(){
