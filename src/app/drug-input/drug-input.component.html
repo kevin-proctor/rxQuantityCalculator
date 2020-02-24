@@ -1,0 +1,26 @@
+<h1>Rx Syncing Calculator</h1>
+<form role="form">
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+        <mat-label>Drug Name</mat-label>
+        <input matInput placeholder="Drug Name">
+      </mat-form-field>
+      <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+        <mat-label>Strength</mat-label>
+        <input matInput placeholder="Strength">
+      </mat-form-field>
+    <mat-label>Days of the week taken:</mat-label>
+    <mat-checkbox>Sunday</mat-checkbox>
+    <mat-checkbox>Monday</mat-checkbox>
+    <mat-checkbox>Tuesday</mat-checkbox>
+    <mat-checkbox>Wednesday</mat-checkbox>
+    <mat-checkbox>Thursday</mat-checkbox>
+    <mat-checkbox>Friday</mat-checkbox>
+    <mat-checkbox>Saturday</mat-checkbox>
+    <mat-label>What date do you start your other medications?</mat-label>
+    <mat-form-field class="example-full-width">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+</form>
