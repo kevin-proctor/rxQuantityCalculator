@@ -1,4 +1,7 @@
-<h1>Rx Syncing Calculator</h1>
+<mat-toolbar>
+  <span>Rx Syncing Calculator</span>
+</mat-toolbar>
+
 <form role="form">
   <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
     <mat-label>Drug Name</mat-label>
@@ -16,4 +19,7 @@
     <mat-label>Quantity Remaining</mat-label>
     <input matInput placeholder="Quantity Remaining" type="number">
   </mat-form-field>
+  <button mat-raised-button color="primary">Add to table</button>
 </form>
+
+<app-drug-output></app-drug-output>
