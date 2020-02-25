@@ -4,6 +4,6 @@ export interface Drug{
     quantityPerDay: number,
     quantityRemaining: number,
     daysRemaining: number,
-    syncQuantity: number,
-    syncDate: Date
+    syncQuantity?: number,
+    syncDate?: Date
 }
