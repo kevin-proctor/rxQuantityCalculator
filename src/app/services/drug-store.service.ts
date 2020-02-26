@@ -22,7 +22,7 @@ export class DrugStoreService {
   }
 
   addDrug(dName: string, dStrength: string, qPerDay: number, qRemaining: number) {
-    let newDrug: Drug = { drugName: dName, strength: dStrength, quantityPerDay: qPerDay, quantityRemaining: qRemaining, daysRemaining: (qRemaining / qPerDay) }
+    let newDrug: Drug = { drugName: dName, quantityPerDay: qPerDay, quantityRemaining: qRemaining, daysRemaining: (qRemaining / qPerDay) }
     this.drugs = [...this.drugs, newDrug];
   }
 

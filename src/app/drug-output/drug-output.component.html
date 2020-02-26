@@ -8,11 +8,6 @@
         </ng-container>
 
         <ng-container matColumnDef="strength">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Strength </th>
-            <td mat-cell *matCellDef="let drug"></td>
-        </ng-container>
-
-        <ng-container matColumnDef="quantityPerDay">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity Taken Per Day </th>
             <td mat-cell *matCellDef="let drug"></td>
         </ng-container>
@@ -27,7 +22,11 @@
             <td mat-cell *matCellDef="let drug"></td>
         </ng-container>
 
+        <ng-container matColumnDef="syncQuantity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity Needed to Sync </th>
+            <td mat-cell *matCellDef="let drug"></td>
+        </ng-container>
+
     </table>
-    <button mat-raised-button color="warn">Delete</button>
 
 </div>

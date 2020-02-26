@@ -2,24 +2,39 @@
   <span>Rx Syncing Calculator</span>
 </mat-toolbar>
 
-<form class= "form" role="form">
-  <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
-    <mat-label>Drug Name</mat-label>
-    <input matInput placeholder="Drug Name">
-  </mat-form-field>
-  <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
-    <mat-label>Strength</mat-label>
-    <input matInput placeholder="Strength">
-  </mat-form-field>
-  <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
-    <mat-label>Quantity Per Day</mat-label>
-    <input matInput placeholder="Quantity Per Day" type="number">
-  </mat-form-field>
-  <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
-    <mat-label>Quantity Remaining</mat-label>
-    <input matInput placeholder="Quantity Remaining" type="number">
-  </mat-form-field>
-  <button mat-raised-button color="primary">Add to table</button>
-</form>
+<form [formGroup]="drugForm">
+  <table>
+    <tbody *ngFor="let control of drugForm.get('drugs')['controls']; let i=index">
+      <tr [formGroup]="control">
+        <td class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Drug Name</mat-label>
+            <input class="form-control" formControlName="drug" required type="text" matInput placeholder="Drug Name">
+          </mat-form-field>
+        </td>
+        <td class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Quantity Taken Per Day</mat-label>
+            <input class="form-control" formControlName="quantityPerDay" required type="number" matInput
+              placeholder="Quantity Taken Per Day">
+          </mat-form-field>
+        </td>
+        <td class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Quantity Remaining</mat-label>
+            <input class="form-control" formControlName="quantityRemaining" required type="number" matInput
+              placeholder="Quantity Remaining">
+          </mat-form-field>
+        </td>
 
-<app-drug-output></app-drug-output>
+        <td>
+          <button mat-raised-button (click)="remove(i)" class="btn btn-primary mr-5">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+<div class="buttonContainer">
+  <button mat-raised-button (click)="addDrug()" class="btn btn-primary mr-5 button">Add New Drug</button>
+  <button mat-raised-button (click)="save()" class="btn btn-primary button">Get Sync Date</button>
+</div>

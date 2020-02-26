@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Drug } from '../interfaces/drug.interface';
 import { DrugStoreService } from '../services/drug-store.service';
 import { UserStoreService } from '../services/user-store.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -12,23 +12,37 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./drug-input.component.scss']
 })
 export class DrugInputComponent implements OnInit {
-  floatLabelControl = new FormControl('auto');
+  drugForm: FormGroup;
 
-  drugs: Drug[] = [];
-  drugForm: FormGroup
+  constructor(private fb: FormBuilder) {}
 
-  constructor(private drugStore: DrugStoreService, private userStore: UserStoreService, private fb: FormBuilder) { 
-    floatLabel: this.floatLabelControl
+  ngOnInit() {
+    this.drugForm = this.fb.group({
+      drugs: this.fb.array([])
+    });
   }
 
-  addDrug(e){
-e.preventDefault()
-if(this.drugForm.valid){
-  this.drugStore.addDrug(this.drugForm.value.drugName, this.drugForm.value.strength, this.drugForm.value.quantityPerDay, this.drugForm.value.quantityRemaining)
+
+initiateForm(): FormGroup {
+  return this.fb.group({
+    drug: ['', Validators.required],
+    quantityPerDay: ['', Validators.required],
+    quantityRemaining: ['', Validators.required],
+});
 }
-  }
 
-  ngOnInit(): void {
-  }
+addDrug() {
+  const control = <FormArray>this.drugForm.get('drugs');
+  control.push(this.initiateForm());
+}
+
+remove(index: number) {
+  const control = <FormArray>this.drugForm.get('drugs');
+  control.removeAt(index);
+}
+
+save() {
+  console.log(this.drugForm.value);
+}
 
 }
