@@ -12,9 +12,10 @@ import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./drug-input.component.scss']
 })
 export class DrugInputComponent implements OnInit {
+  drugs: Drug[] = [];
   drugForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private drugStore: DrugStoreService, private userService: UserStoreService) {}
 
   ngOnInit() {
     this.drugForm = this.fb.group({
@@ -43,6 +44,7 @@ remove(index: number) {
 
 save() {
   console.log(this.drugForm.value);
+  
 }
 
 }
